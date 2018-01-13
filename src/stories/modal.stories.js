@@ -12,7 +12,7 @@ stories.addWithJSX('A Modal', () => {
         title: "I'm a modal",
         icon: "error",
         contents:[],
-        isOpen: true,
+        defaultOpen: true,
         footer: false,
         hasHeader: true
     };
