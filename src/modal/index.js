@@ -23,7 +23,7 @@ export default class ModalWrapper extends PureComponent {
         } = this.state;
 
         return (
-            <Modal isOpen={isOpen} toggle={toggle} wrapClassName="modal-content" className="modal-content">
+            <Modal isOpen={isOpen} toggle={toggle}>
                 <ModalBody>
                     <div className="container-fluid">
                         <div className="row">

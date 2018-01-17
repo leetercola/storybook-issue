@@ -2,12 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import ModalWrapper from '../modal';
 import { specs, describe, it } from 'storybook-addon-specifications';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import expect from 'expect';
 
 const stories = storiesOf('Modal', module);
 
-stories.addWithJSX('A Modal', () => {
+stories.addWithJSX('modal/opened', () => {
     const props = {
         title: "I'm a modal",
         icon: "error",
@@ -16,8 +16,33 @@ stories.addWithJSX('A Modal', () => {
         footer: false,
         hasHeader: true
     };
+    const wrapper = <ModalWrapper {...props} ><p>I'm modal body</p></ModalWrapper>;
+    const wrapped = shallow(wrapper);
+    specs(() => describe('Modal open', () => {
+        it('should return open modal', () => {
+            expect(wrapped).toBeTruthy();
+        });
+    }));
 
-    return (
-      <ModalWrapper {...props} ><p>I'm modal body</p></ModalWrapper>
-    )
+    return wrapper;
+});
+
+stories.addWithJSX('modal/closed', () => {
+    const props = {
+        title: "I'm a modal",
+        icon: "error",
+        contents:[],
+        defaultOpen: false,
+        footer: false,
+        hasHeader: true
+    };
+    const wrapper = <ModalWrapper {...props} ><p>I'm modal body</p></ModalWrapper>;
+    const wrapped = shallow(wrapper);
+    specs(() => describe('Modal open', () => {
+        it('should return open modal', () => {
+            expect(wrapped).toBeTruthy();
+        });
+    }));
+
+    return wrapper;
 });
